@@ -1,0 +1,33 @@
+digraph {
+	fontname=Arial rankdir=LR size=10
+	A [label="Poultry Images
+(Healthy & Sick)" fillcolor="#FFD966" shape=cylinder style=filled]
+	B [label="Annotation via Roboflow" fillcolor="#D9EAD3" shape=box style="rounded,filled"]
+	C [label="Data Preprocessing
+(Split, Augment)" fillcolor="#D9EAD3" shape=box style="rounded,filled"]
+	D1 [label="Train YOLOv8" fillcolor="#CFE2F3" shape=box3d style=filled]
+	D2 [label="Train YOLOv11" fillcolor="#CFE2F3" shape=box3d style=filled]
+	D3 [label="Train YOLOv12" fillcolor="#CFE2F3" shape=box3d style=filled]
+	E [label="Evaluate Models
+(mAP, Precision, Recall)" fillcolor="#D9EAD3" shape=box style="rounded,filled"]
+	F [label="Select Best Model?
+→ YOLOv11" fillcolor="#F4CCCC" shape=diamond style=filled]
+	G [label="Web App Integration
+(Live Feed & Upload)" fillcolor="#D9EAD3" shape=box style="rounded,filled"]
+	H [label="Real-Time Inference
+with YOLOv11" fillcolor="#D9EAD3" shape=box style="rounded,filled"]
+	I [label="Display Results
+(Bounding Boxes, Labels)" fillcolor="#EAD1DC" shape=ellipse style=filled]
+	A -> B
+	B -> C
+	C -> D1
+	C -> D2
+	C -> D3
+	D1 -> E
+	D2 -> E
+	D3 -> E
+	E -> F
+	F -> G [label="YOLOv11 Selected" color=green]
+	G -> H
+	H -> I
+}

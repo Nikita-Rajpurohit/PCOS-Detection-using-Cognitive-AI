@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCOS Detection System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <style>
+    .hero-section {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .service-card {
+      transition: all 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      height: 100%;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .btn-service {
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      min-width: 200px;
+    }
+    .btn-service:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="#">
+        <i class="bi bi-heart-pulse me-2"></i>PCOS Detect
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/menstrual_tracker">
+            Cycle Tracker
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="container my-5">
+    <div class="hero-section text-center">
+      <h1 class="display-4 fw-bold mb-4">PCOS Detection System</h1>
+      <p class="lead mb-4">Empowering women with early detection and personalized insights for Polycystic Ovary Syndrome</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="/self-diagnosis" class="btn btn-primary btn-lg btn-service">
+          <i class="bi bi-clipboard2-pulse me-2"></i>Self Diagnosis
+        </a>
+        <a href="/ultrasound" class="btn btn-success btn-lg btn-service">
+          <i class="bi bi-image-alt me-2"></i>Ultrasound Scan
+        </a>
+        <a href="/menstrual_tracker" class="btn btn-danger btn-lg btn-service">
+          <i class="bi bi-calendar-heart me-2"></i>Cycle Tracker
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="container mb-5" id="services">
+    <h2 class="text-center mb-5 fw-bold">Our Services</h2>
+    <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-4">
+      <div class="col-md-4">
+        <div class="service-card card h-100">
+          <div class="card-body text-center p-4">
+            <div class="feature-icon bg-primary bg-opacity-10 text-primary">
+              <i class="bi bi-clipboard2-pulse"></i>
+            </div>
+            <h3 class="h4 mb-3">Self Diagnosis</h3>
+            <p class="text-muted">Complete our comprehensive questionnaire to assess your PCOS risk factors and symptoms.</p>
+            <a href="/self-diagnosis" class="btn btn-outline-primary mt-3">Get Started</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card card h-100">
+          <div class="card-body text-center p-4">
+            <div class="feature-icon bg-success bg-opacity-10 text-success">
+              <i class="bi bi-image-alt"></i>
+            </div>
+            <h3 class="h4 mb-3">Ultrasound Analysis</h3>
+            <p class="text-muted">Upload your ultrasound images for AI-powered analysis of ovarian morphology.</p>
+            <a href="/ultrasound" class="btn btn-outline-success mt-3">Upload Scan</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card card h-100">
+          <div class="card-body text-center p-4">
+            <div class="feature-icon bg-danger bg-opacity-10 text-danger">
+              <i class="bi bi-calendar-heart"></i>
+            </div>
+            <h3 class="h4 mb-3">Menstrual Tracker</h3>
+            <p class="text-muted">Track your menstrual cycle, predict periods, ovulation, and fertile windows.</p>
+            <a href="/menstrual_tracker" class="btn btn-outline-danger mt-3">Track Cycle</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card card h-100">
+          <div class="card-body text-center p-4">
+            <div class="feature-icon bg-info bg-opacity-10 text-info">
+              <i class="bi bi-chat-square-text"></i>
+            </div>
+            <h3 class="h4 mb-3">PCOS Assistant</h3>
+            <p class="text-muted">Chat with our AI assistant to get answers to your PCOS-related questions anytime.</p>
+            <a href="/chatbot" class="btn btn-outline-info mt-3">Start Chat</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center mb-5 fw-bold">Why Choose Our System</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="text-center p-4">
+            <i class="bi bi-shield-check feature-icon bg-primary bg-opacity-10 text-primary"></i>
+            <h3 class="h4">Accurate Detection</h3>
+            <p class="text-muted">Our AI models are trained on thousands of cases for reliable PCOS dayGridMonthetection.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="text-center p-4">
+            <i class="bi bi-lock feature-icon bg-success bg-opacity-10 text-success"></i>
+            <h3 class="h4">Privacy Focused</h3>
+            <p class="text-muted">Your health data is encrypted and never shared without your consent.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="text-center p-4">
+            <i class="bi bi-graph-up feature-icon bg-info bg-opacity-10 text-info"></i>
+            <h3 class="h4">Personalized Insights</h3>
+            <p class="text-muted">Get customized recommendations based on your unique profile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-0">© 2025 PCOS Detection System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

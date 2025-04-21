@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Medical Shops Near You</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- W3CSS & Fonts -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <style>
+    body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+    body {font-size:16px;}
+    #map { height: 500px; width: 100%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="width:260px;font-weight:bold;background-color:#efd0cc;font-family: 'Playfair Display';" id="mySidebar">
+  <div class="w3-container">
+    <h2 class="w3-padding-64"><b>PCOS Assistant</b></h2>
+  </div>
+  <div class="w3-bar-block">
+    <a href="/" class="w3-bar-item w3-button w3-hover-white">Home</a>
+  </div>
+</nav>
+
+<!-- Overlay effect -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" id="myOverlay"></div>
+
+<!-- Main content -->
+<div class="w3-main" style="margin-left:280px;margin-right:40px">
+  <div class="w3-container" style="margin-top:80px;" id="showcase">
+    <h1 class="w3-xxxlarge" style="font-family: 'Playfair Display';"><b>Medical Shops Near You</b></h1>
+    <hr style="width:50px; border:5px solid black;" class="w3-round">
+    <div id="map"></div>
+  </div>
+</div>
+
+<!-- Google Maps Logic -->
+<script>
+let map;
+
+function initMap() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      const userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: userLocation,
+        zoom: 14
+      });
+
+      const service = new google.maps.places.PlacesService(map);
+      service.nearbySearch({
+        location: userLocation,
+        radius: 2500,
+        type: 'pharmacy'
+      }, (results, status) => {
+        if (status !== 'OK') return;
+        results.forEach(place => {
+          new google.maps.Marker({
+            map,
+            position: place.geometry.location,
+            title: place.name,
+            icon: {
+              url: place.icon,
+              scaledSize: new google.maps.Size(25, 25)
+            }
+          });
+        });
+      });
+
+    }, () => {
+      alert("Geolocation failed.");
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+</script>
+
+<!-- Load Google Maps API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2YapeohJtrPVjwzE542JSRQBVysQhJdM&libraries=places&callback=initMap" async defer></script>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

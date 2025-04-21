@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gynecologists</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <style>
+    body, h1, h2, h3, h4, h5 {font-family: "Poppins", sans-serif}
+    body {font-size: 16px;}
+    #map {
+      height: 500px;
+      margin: 10px auto;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:260px;font-weight:bold;background-color:#efd0cc; font-family: 'Playfair Display';" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h1 class="w3-padding-64"><b>PCOS Detection:<br />Advancing Women's Health</b></h1>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Suraksha Sathi</span>
+</header>
+
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<!-- PAGE CONTENT -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo" style="font-family: 'Playfair Display';"><b>Gynecologists near you</b></h1>
+    <div>
+
+    </div>
+    <hr style="width:50px;border:5px solid black" class="w3-round">
+  </div>
+
+  <div id="map"></div>
+</div>
+
+<!-- Google Maps Script -->
+<script>
+  let map;
+  let pyrmont = { lat: 23.8701334, lng: 90.2713944 };
+
+  function initMap() {
+    console.log("Map is initializing...");
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(gps, () => alert("Location access denied."));
+    }
+  }
+
+  function gps(position) {
+    pyrmont = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: pyrmont,
+      zoom: 15
+    });
+
+    const service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+      location: pyrmont,
+      radius: 3000,
+      keyword: 'gynecologist',
+      type: 'doctor'
+    }, (results, status, pagination) => {
+      if (status !== 'OK') return;
+      createMarkers(results);
+    });
+  }
+
+  function createMarkers(places) {
+    const bounds = new google.maps.LatLngBounds();
+    for (let place of places) {
+      const marker = new google.maps.Marker({
+        map: map,
+        title: place.name,
+        position: place.geometry.location
+      });
+      bounds.extend(place.geometry.location);
+    }
+    map.fitBounds(bounds);
+  }
+</script>
+
+<!-- Google Maps Script -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2YapeohJtrPVjwzE542JSRQBVysQhJdM&libraries=places&callback=initMap" async defer></script>
+
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
